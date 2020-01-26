@@ -1,5 +1,5 @@
 language: generic
-sudo: rrequired
+sudo: required
 services:
     - docker
 
@@ -14,10 +14,9 @@ after_success:
     - docker build -t phawit9/multi-nginx ./nginx
     - docker build -t phawit9/multi-server ./server
     - docker build -t phawit9/multi-worker ./worker
-
-# log in to docker cli
-- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-- docker push phawit9/multi-client
-- docker push phawit9/multi-nginx
-- docker push phawit9/multi-server
-- docker push phawit9/multi-worker
+    # log in to docker cli
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+    - docker push phawit9/multi-client
+    - docker push phawit9/multi-nginx
+    - docker push phawit9/multi-server
+    - docker push phawit9/multi-worker
